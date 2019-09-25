@@ -40,12 +40,12 @@ class VIP_Jetpack_Sync_Cron {
 	 * @param array  $schedules
 	 */
 	public function jp_sync_cron_schedule_interval( $schedules ) {
-		$interval = apply_filters( 
-			'vip_jetpack_sync_cron_interval', 
+		$interval = apply_filters(
+			'vip_jetpack_sync_cron_interval',
 			[
 		    	'interval' => 60,
-		    	'display'  => esc_html__( 'Every minute' ),
-			] 
+		    	'display'  => 'Every minute',
+			]
 		);
 
 		$schedules[ self::SYNC_INTERVAL_NAME ] = $interval;
