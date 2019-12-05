@@ -15,9 +15,7 @@ class VIP_Jetpack_Sync_Cron {
 	const SYNC_INTERVAL_NAME = 'vip_jp_sync_cron_interval';
 
 	/**
-	 * Initiate an instance of this class if one doesn't exist already.
-	 *
-	 * @return VIP_Jetpack_Sync_Cron instance
+	 * Add the necessary hooks.
 	 */
 	public static function init() {
 		if ( ! class_exists( 'Jetpack' ) ) { // Bail if no Jetpack.
@@ -37,7 +35,8 @@ class VIP_Jetpack_Sync_Cron {
 	/**
 	 * Filter to add custom interval to schedule.
 	 *
-	 * @param array  $schedules
+	 * @param array $schedules
+	 * @return array $schedules
 	 */
 	public static function jp_sync_cron_schedule_interval( $schedules ) {
 		$interval = apply_filters(
@@ -56,7 +55,7 @@ class VIP_Jetpack_Sync_Cron {
 	/**
 	 * Filter to return custom cron interval name.
 	 *
-	 * @param string  $incremental_sync_cron_schedule
+	 * @return string The cron schedule / interval's name.
 	 */
 	public static function filter_jetpack_sync_interval() {
 		return self::SYNC_INTERVAL_NAME;
