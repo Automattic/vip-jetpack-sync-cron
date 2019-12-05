@@ -19,7 +19,7 @@ class VIP_Jetpack_Sync_Cron {
 	 *
 	 * @return VIP_Jetpack_Sync_Cron instance
 	 */
-	static public function init() {
+	public function init() {
 		if ( ! class_exists( 'Jetpack' ) ) { // Bail if no Jetpack.
 			return;
 		}
@@ -63,4 +63,7 @@ class VIP_Jetpack_Sync_Cron {
 	}
 }
 
-add_action( 'after_setup_theme', [ 'VIP_Jetpack_Sync_Cron', 'init' ] ); // Since Jetpack autoloads their classes, we need to hook later.
+// Since Jetpack autoloads their classes, we need to hook later.
+add_action( 'after_setup_theme', function() {
+	( new VIP_Jetpack_Sync_Cron() )->init();
+} );
