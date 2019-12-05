@@ -19,7 +19,7 @@ class VIP_Jetpack_Sync_Cron {
 	 *
 	 * @return VIP_Jetpack_Sync_Cron instance
 	 */
-	static public function init() {
+	public static function init() {
 		if ( ! class_exists( 'Jetpack' ) ) { // Bail if no Jetpack.
 			return;
 		}
@@ -28,9 +28,9 @@ class VIP_Jetpack_Sync_Cron {
 			return;
 		}
 
-		add_filter( 'cron_schedules', [ $this, 'jp_sync_cron_schedule_interval' ] );
-		add_filter( 'jetpack_sync_incremental_sync_interval', [ $this, 'filter_jetpack_sync_interval' ], 999 );
-		add_filter( 'jetpack_sync_full_sync_interval', [ $this, 'filter_jetpack_sync_interval' ], 999 );
+		add_filter( 'cron_schedules', [ __CLASS__, 'jp_sync_cron_schedule_interval' ] );
+		add_filter( 'jetpack_sync_incremental_sync_interval', [ __CLASS__, 'filter_jetpack_sync_interval' ], 999 );
+		add_filter( 'jetpack_sync_full_sync_interval', [ __CLASS__, 'filter_jetpack_sync_interval' ], 999 );
 		add_filter( 'jetpack_sync_sender_should_load', [ Settings::class, 'is_doing_cron' ], 999 ); // Short circuit loading of Jetpack sender to sync only on cron.
 	}
 
@@ -39,7 +39,7 @@ class VIP_Jetpack_Sync_Cron {
 	 *
 	 * @param array  $schedules
 	 */
-	public function jp_sync_cron_schedule_interval( $schedules ) {
+	public static function jp_sync_cron_schedule_interval( $schedules ) {
 		$interval = apply_filters(
 			'vip_jetpack_sync_cron_interval',
 			[
@@ -58,7 +58,7 @@ class VIP_Jetpack_Sync_Cron {
 	 *
 	 * @param string  $incremental_sync_cron_schedule
 	 */
-	public function filter_jetpack_sync_interval() {
+	public static function filter_jetpack_sync_interval() {
 		return self::SYNC_INTERVAL_NAME;
 	}
 }
