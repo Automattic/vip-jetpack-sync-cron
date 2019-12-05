@@ -43,8 +43,8 @@ class VIP_Jetpack_Sync_Cron {
 		$interval = apply_filters(
 			'vip_jetpack_sync_cron_interval',
 			[
-		    	'interval' => 60,
-		    	'display'  => 'Every minute',
+				'interval' => 60,
+				'display'  => 'Every minute',
 			]
 		);
 
