@@ -1,5 +1,5 @@
 # VIP Jetpack Sync Cron
-By default, Jetpack Sync will sometimes attempt to piggyback on various cron or API requests - causing slowdowns on the shutdown hook. This plugin changes that, and ensures that Jetpack only syncs on the dedicated cron task.
+By default, Jetpack Sync will sometimes attempt to piggyback on various cron or API requests - causing slowdowns on the shutdown hook. This plugin modifies that behaviour and ensures that Jetpack only syncs on the dedicated cron task.
 
 ## Installation
 
