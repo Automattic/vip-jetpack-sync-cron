@@ -1,4 +1,6 @@
 # VIP Jetpack Sync Cron
+Note: As of Jetpack 11.2+, the dedicated sync option is available for usage instead. This plugin will bail early if Jetpack has dedicated sync enabled.
+
 By default, Jetpack Sync will sometimes attempt to piggyback on various cron or API requests - causing slowdowns on the shutdown hook. This plugin modifies that behaviour and ensures that Jetpack only syncs on the dedicated cron task.
 
 ## Installation
