@@ -19,17 +19,17 @@ class VIP_Jetpack_Sync_Cron {
 	 */
 	public static function init() {
 		if ( ! class_exists( 'Jetpack' ) ) { // Bail if no Jetpack.
-			__doing_it_wrong( __FUNCTION__, 'VIP_Jetpack_Sync_Cron::Jetpack plugin must be activated!', null );
+			_doing_it_wrong( __FUNCTION__, 'VIP_Jetpack_Sync_Cron::Jetpack plugin must be activated!', null );
 			return;
 		}
 
 		if ( defined( 'JETPACK__VERSION' ) && version_compare( JETPACK__VERSION, '11.2', '>=' ) && Settings::is_dedicated_sync_enabled() ) { // Bail if dedicated syncing is enabled.
-			__doing_it_wrong( __FUNCTION__, 'VIP_Jetpack_Sync_Cron::Jetpack dedicated sync must be disabled!', null );
+			_doing_it_wrong( __FUNCTION__, 'VIP_Jetpack_Sync_Cron::Jetpack dedicated sync must be disabled!', null );
 			return;
 		}
 
 		if ( ! Actions::sync_via_cron_allowed() ) { // Bail if no syncing via cron allowed.
-			__doing_it_wrong( __FUNCTION__, 'VIP_Jetpack_Sync_Cron::Jetpack syncing via cron must be enabled!', null );
+			_doing_it_wrong( __FUNCTION__, 'VIP_Jetpack_Sync_Cron::Jetpack syncing via cron must be enabled!', null );
 			return;
 		}
 
